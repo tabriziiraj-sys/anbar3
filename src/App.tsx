@@ -53,19 +53,56 @@ function App() {
           </div>
         </div>
 
+        {/* Direct Download for BAT files */}
+        <div className="bg-yellow-50 border-2 border-yellow-300 rounded-xl shadow-md p-6 mb-8">
+          <h2 className="text-xl font-bold text-yellow-800 mb-4">⚠️ دانلود مستقیم فایل‌های BAT</h2>
+          <p className="text-yellow-700 mb-4">
+            اگر فایل‌های BAT از ZIP کار نکردند، آن‌ها را مستقیماً از اینجا دانلود کنید:
+          </p>
+          <div className="flex flex-wrap gap-3">
+            <a
+              href="/install.bat"
+              download="install.bat"
+              className="bg-yellow-600 hover:bg-yellow-700 text-white px-6 py-2 rounded-lg font-bold transition-all shadow-md hover:shadow-lg inline-block"
+            >
+              📥 دانلود install.bat
+            </a>
+            <a
+              href="/start.bat"
+              download="start.bat"
+              className="bg-yellow-600 hover:bg-yellow-700 text-white px-6 py-2 rounded-lg font-bold transition-all shadow-md hover:shadow-lg inline-block"
+            >
+              📥 دانلود start.bat
+            </a>
+          </div>
+          <p className="text-yellow-700 mt-4 text-sm">
+            💡 <strong>نکته:</strong> بعد از دانلود، روی فایل‌ها راست کلیک کنید و "Run as administrator" را انتخاب کنید.
+          </p>
+        </div>
+
         {/* Quick Start */}
         <div className="bg-white rounded-xl shadow-md p-6 mb-8">
           <h2 className="text-xl font-bold text-gray-800 mb-4">🚀 شروع سریع</h2>
           <div className="grid md:grid-cols-2 gap-6">
             <div className="bg-gray-50 rounded-lg p-4">
               <h3 className="font-bold text-gray-700 mb-2">اجرا در Windows</h3>
-              <ol className="list-decimal list-inside space-y-1 text-gray-600 text-sm">
+              <ol className="list-decimal list-inside space-y-2 text-gray-600 text-sm">
                 <li>فایل ZIP را دانلود و Extract کنید</li>
-                <li>فایل <code className="bg-gray-200 px-1 rounded">install.bat</code> را اجرا کنید</li>
-                <li>فایل <code className="bg-gray-200 px-1 rounded">.env</code> را ویرایش کنید</li>
-                <li>فایل <code className="bg-gray-200 px-1 rounded">start.bat</code> را اجرا کنید</li>
+                <li>Node.js را نصب کنید (نسخه 18 یا بالاتر)</li>
+                <li>فایل <code className="bg-gray-200 px-1 rounded">install.bat</code> را راست کلیک و "Run as administrator" کنید</li>
+                <li>فایل <code className="bg-gray-200 px-1 rounded">.env</code> را ویرایش کنید (رمز عبور را تغییر دهید)</li>
+                <li>فایل <code className="bg-gray-200 px-1 rounded">start.bat</code> را راست کلیک و "Run as administrator" کنید</li>
                 <li>مرورگر باز می‌شود: <code className="bg-gray-200 px-1 rounded">http://localhost:3000</code></li>
               </ol>
+              <div className="mt-4 p-3 bg-blue-50 rounded-lg">
+                <p className="text-blue-800 text-xs">
+                  💡 <strong>روش جایگزین:</strong> اگر BAT کار نکرد، Command Prompt را باز کنید، به پوشه پروژه بروید و این دستورات را اجرا کنید:
+                </p>
+                <code className="block mt-2 bg-gray-900 text-green-300 p-2 rounded text-xs" dir="ltr">
+                  npm install<br/>
+                  npm start
+                </code>
+              </div>
             </div>
             <div className="bg-gray-50 rounded-lg p-4">
               <h3 className="font-bold text-gray-700 mb-2">اطلاعات ورود اولیه</h3>
@@ -74,6 +111,42 @@ function App() {
                 <p className="text-gray-600">رمز عبور: <code className="bg-gray-200 px-2 py-0.5 rounded font-bold">123456</code></p>
                 <p className="text-gray-500 mt-2 text-xs">⚠️ حتماً رمز عبور را تغییر دهید</p>
               </div>
+              <div className="mt-4 p-3 bg-red-50 rounded-lg">
+                <p className="text-red-800 text-xs">
+                  ⚠️ <strong>مشکل BAT:</strong> اگر فایل‌های BAT کار نمی‌کنند، از روش Command Prompt استفاده کنید (بالا را ببینید)
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Troubleshooting */}
+        <div className="bg-red-50 border border-red-200 rounded-xl shadow-md p-6 mb-8">
+          <h2 className="text-xl font-bold text-red-800 mb-4">🔧 رفع مشکلات</h2>
+          <div className="space-y-3">
+            <div className="bg-white rounded-lg p-4">
+              <h3 className="font-bold text-gray-700 mb-2">مشکل: فایل BAT کار نمی‌کند</h3>
+              <p className="text-gray-600 text-sm mb-2">راه حل:</p>
+              <ol className="list-decimal list-inside space-y-1 text-gray-600 text-sm">
+                <li>Command Prompt را به صورت Administrator باز کنید</li>
+                <li>به پوشه پروژه بروید: <code className="bg-gray-200 px-1 rounded">cd path\to\project</code></li>
+                <li>اجرا کنید: <code className="bg-gray-200 px-1 rounded">npm install</code></li>
+                <li>اجرا کنید: <code className="bg-gray-200 px-1 rounded">npm start</code></li>
+              </ol>
+            </div>
+            <div className="bg-white rounded-lg p-4">
+              <h3 className="font-bold text-gray-700 mb-2">مشکل: خطای better-sqlite3</h3>
+              <p className="text-gray-600 text-sm mb-2">راه حل:</p>
+              <ul className="list-disc list-inside space-y-1 text-gray-600 text-sm">
+                <li>Node.js نسخه 18 یا بالاتر نصب کنید</li>
+                <li>Windows Build Tools را نصب کنید: <code className="bg-gray-200 px-1 rounded">npm install --global windows-build-tools</code></li>
+                <li>دوباره <code className="bg-gray-200 px-1 rounded">npm install</code> را اجرا کنید</li>
+              </ul>
+            </div>
+            <div className="bg-white rounded-lg p-4">
+              <h3 className="font-bold text-gray-700 mb-2">مشکل: پورت 3000 در حال استفاده است</h3>
+              <p className="text-gray-600 text-sm mb-2">راه حل:</p>
+              <p className="text-gray-600 text-sm">فایل <code className="bg-gray-200 px-1 rounded">.env</code> را ویرایش کنید و <code className="bg-gray-200 px-1 rounded">PORT=3001</code> را تنظیم کنید</p>
             </div>
           </div>
         </div>
