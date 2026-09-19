@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>داشبورد - سیستم مدیریت</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-brand">سیستم مدیریت</div>
+    <div class="nav-links">
+      <a href="#" class="nav-link active" data-page="dashboard">داشبورد</a>
+      <a href="#" class="nav-link" data-page="records">اطلاعات</a>
+      <a href="#" class="nav-link admin-only" data-page="users">کاربران</a>
+      <a href="#" class="nav-link" id="logoutBtn">خروج</a>
+    </div>
+  </nav>
+
+  <main class="container">
+    <!-- Dashboard Page -->
+    <div id="dashboard-page" class="page active">
+      <h2>داشبورد</h2>
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-number" id="userCount">0</div>
+          <div class="stat-label">تعداد کاربران</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number" id="recordCount">0</div>
+          <div class="stat-label">تعداد رکوردها</div>
+        </div>
+      </div>
+      <h3>آخرین رکوردها</h3>
+      <div id="recentRecords"></div>
+    </div>
+
+    <!-- Records Page -->
+    <div id="records-page" class="page">
+      <h2>اطلاعات</h2>
+      <div class="toolbar">
+        <input type="text" id="searchInput" placeholder="جستجو..." class="search-input">
+        <button class="btn btn-primary" id="addRecordBtn">+ ثبت جدید</button>
+      </div>
+      <div id="recordsTable"></div>
+    </div>
+
+    <!-- Users Page (Admin only) -->
+    <div id="users-page" class="page">
+      <h2>کاربران</h2>
+      <div class="toolbar">
+        <button class="btn btn-primary" id="addUserBtn">+ کاربر جدید</button>
+      </div>
+      <div id="usersTable"></div>
+    </div>
+  </main>
+
+  <!-- Record Modal -->
+  <div id="recordModal" class="modal">
+    <div class="modal-content">
+      <h3 id="recordModalTitle">ثبت اطلاعات جدید</h3>
+      <form id="recordForm">
+        <input type="hidden" id="recordId">
+        <div class="form-group">
+          <label for="recordTitle">عنوان</label>
+          <input type="text" id="recordTitle" required>
+        </div>
+        <div class="form-group">
+          <label for="recordDescription">توضیحات</label>
+          <textarea id="recordDescription" rows="4"></textarea>
+        </div>
+        <div class="modal-actions">
+          <button type="submit" class="btn btn-primary">ذخیره</button>
+          <button type="button" class="btn btn-secondary" onclick="closeModal('recordModal')">انصراف</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- User Modal -->
+  <div id="userModal" class="modal">
+    <div class="modal-content">
+      <h3>ایجاد کاربر جدید</h3>
+      <form id="userForm">
+        <div class="form-group">
+          <label for="userName">نام</label>
+          <input type="text" id="userName" required>
+        </div>
+        <div class="form-group">
+          <label for="userUsername">نام کاربری</label>
+          <input type="text" id="userUsername" required>
+        </div>
+        <div class="form-group">
+          <label for="userPassword">رمز عبور</label>
+          <input type="password" id="userPassword" required>
+        </div>
+        <div class="form-group">
+          <label for="userRole">نقش</label>
+          <select id="userRole">
+            <option value="user">کاربر</option>
+            <option value="admin">مدیر</option>
+          </select>
+        </div>
+        <div class="modal-actions">
+          <button type="submit" class="btn btn-primary">ذخیره</button>
+          <button type="button" class="btn btn-secondary" onclick="closeModal('userModal')">انصراف</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

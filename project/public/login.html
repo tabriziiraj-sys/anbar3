@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ورود - سیستم مدیریت</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="login-container">
+    <div class="login-box">
+      <h1>ورود به سیستم</h1>
+      <form id="loginForm">
+        <div class="form-group">
+          <label for="username">نام کاربری</label>
+          <input type="text" id="username" name="username" required placeholder="نام کاربری">
+        </div>
+        <div class="form-group">
+          <label for="password">رمز عبور</label>
+          <input type="password" id="password" name="password" required placeholder="رمز عبور">
+        </div>
+        <div id="error" class="error"></div>
+        <button type="submit" class="btn btn-primary">ورود</button>
+      </form>
+    </div>
+  </div>
+  <script src="login.js"></script>
+</body>
+</html>
